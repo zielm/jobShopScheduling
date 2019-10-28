@@ -5,6 +5,7 @@ import static java.lang.Boolean.TRUE;
  public class Config {
 
      public static final int MACHINES = 4;
+     public static final String INSTANCE_NAME = "00";
      public static final int INSTANCE_START_SIZE = 50;
      public static final int INSTANCE_N = 10;
 

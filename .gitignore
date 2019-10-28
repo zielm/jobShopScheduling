@@ -2,6 +2,7 @@
 # Compiled class file
 *.class
 target/
+out/
 
 # InteliJ
 .idea/
@@ -9,4 +10,4 @@ target/
 
 # Out
 instances/
-
+results/

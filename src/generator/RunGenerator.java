@@ -1,12 +1,11 @@
 package generator;
 
 import commons.Instance;
-import io.SaveInstance;
+import io.SaveFile;
 
 import java.io.IOException;
 
-import static configuration.Config.INSTANCE_N;
-import static configuration.Config.INSTANCE_START_SIZE;
+import static configuration.Config.*;
 
 public class RunGenerator {
 
@@ -14,8 +13,8 @@ public class RunGenerator {
 
         for (int i = 1; i <= INSTANCE_N; i++) {
             int instanceSize = i * INSTANCE_START_SIZE;
-                Instance instance = new Instance(instanceSize);
-                SaveInstance.save(instance);
+                Instance instance = new Instance(INSTANCE_NAME, instanceSize);
+                SaveFile.saveInstance(instance);
         }
     }
 }

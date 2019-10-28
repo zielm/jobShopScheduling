@@ -8,9 +8,11 @@ public class Instance {
 
     private List<Job> jobs;
     private int instanceSize;
+    private String name;
 
-    public Instance(int instanceSize) {
+    public Instance(String name, int instanceSize) {
         this.instanceSize = instanceSize;
+        this.name = name + "_" + instanceSize;
         InstanceGenerator instanceGenerator = new InstanceGenerator(instanceSize);
         instanceGenerator.generate();
         jobs = instanceGenerator.getJobs();
@@ -28,4 +30,7 @@ public class Instance {
         return instanceSize;
     }
 
+    public String getName() {
+        return name;
+    }
 }
