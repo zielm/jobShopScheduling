@@ -9,7 +9,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static configuration.Config.INSTANCE_NAME;
 import static configuration.Config.MACHINES;
 
 public class LoadFile {
@@ -56,7 +55,7 @@ public class LoadFile {
             line = in.readLine();
             lineSplit = line.split(" ");
             for (String jobNumber : lineSplit) {
-                machines.get(i).getJobs().add(jobsInstance.get(Integer.parseInt(jobNumber)-1));
+                machines.get(i).addScheduledJob(jobsInstance.get(Integer.parseInt(jobNumber)-1));
             }
             machines.get(i).getDelay();
         }

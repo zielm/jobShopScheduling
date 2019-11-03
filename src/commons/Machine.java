@@ -4,34 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Machine {
-    private List<Job> jobs = new ArrayList<>();
-    private int delay;
-    private int lastFinished;
+    private List<ScheduledJob> scheduledJobs = new ArrayList<>();
 
-    public List<Job> getJobs() {
-        return jobs;
+    public List<ScheduledJob> getScheduledJobs() {
+        return scheduledJobs;
     }
 
-    public void setJobs(List<Job> jobs) {
-        this.jobs = jobs;
+    public void setScheduledJobs(List<ScheduledJob> scheduledJobs) {
+        this.scheduledJobs = scheduledJobs;
     }
 
     public int getDelay() {
-        calculateTimes();
+        int delay = 0;
+        for(ScheduledJob job : scheduledJobs) {
+            delay += job.getDelay();
+        }
         return delay;
     }
 
     public int getLastFinished() {
-        calculateTimes();
-        return lastFinished;
+        if (scheduledJobs.isEmpty()) return 0;
+        return scheduledJobs.get(scheduledJobs.size() - 1).getEndTime();
     }
 
-    private void calculateTimes() {
-        delay = 0;
-        lastFinished = jobs.get(0).getReadyTime();
-        for (Job job : jobs) {
-            lastFinished = Math.max(lastFinished, job.getReadyTime()) + job.getProcessingTime();
-            delay += Math.max(0, (lastFinished - job.getDueTime()));
-        }
+    public void addScheduledJob(Job newJob) {
+        scheduledJobs.add(new ScheduledJob(newJob, Math.max(newJob.getReadyTime(), getLastFinished())));
     }
+
+
 }

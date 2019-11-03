@@ -1,9 +1,6 @@
 package io;
 
-import commons.Instance;
-import commons.Job;
-import commons.Machine;
-import commons.Result;
+import commons.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -31,16 +28,16 @@ public class SaveFile {
         out.close();
     }
 
-    public static void saveResult(Result result) throws IOException {
+    public static void saveResult(String algorithm, Result result) throws IOException {
         int resultValue = result.getDelay();
 
-        String plik = "results/out" + result.getInstanceName();
+        String plik = "results/" + algorithm + "_" + result.getInstanceName();
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(plik)));
         out.write(Integer.toString(resultValue) + "\n");
 
         for (Machine m : result.getMachines()) {
-            for (Job job : m.getJobs()) {
-                out.write(Integer.toString(job.getJobId()) + " ");
+            for (ScheduledJob sjob : m.getScheduledJobs()) {
+                out.write(Integer.toString(sjob.getJob().getJobId()) + " ");
             }
             out.write("\n");
 

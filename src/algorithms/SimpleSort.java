@@ -6,27 +6,29 @@ import commons.Machine;
 import commons.Result;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static configuration.Config.MACHINES;
 
-public class Naive {
+public class SimpleSort {
 
     public static Result run (Instance instance) {
-        int cnt = 0;
         int n = instance.getInstanceSize();
-        int threshold = (int)Math.round(n/4.0);
         List<Machine> machines = new ArrayList<>();
         for(int i = 0; i < MACHINES; i++) {
             machines.add(new Machine());
         }
 
-        for (Job job : instance.getJobs()) {
-            machines.get(cnt/threshold).addScheduledJob(job);
-            cnt++;
+        List<Job> sortedJobs = instance.getJobs();
+        Collections.sort(sortedJobs);
+
+        for (Job job : sortedJobs) {
+            Machine m = machines.stream().min(Comparator.comparing(Machine::getLastFinished)).orElse(null);
+            m.addScheduledJob(job);
         }
 
         return new Result(instance.getName(), n, machines);
     }
-
 }
