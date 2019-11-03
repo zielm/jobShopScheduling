@@ -1,6 +1,6 @@
 package commons;
 
-public class Job {
+public class Job implements Comparable<Job> {
     private int jobId;
     private int processingTime;
     private int readyTime;
@@ -48,5 +48,17 @@ public class Job {
 
     public void setDueTime(int dueTime) {
         this.dueTime = dueTime;
+    }
+
+    @Override
+    public int compareTo(Job j) {
+        int result = Integer.compare(readyTime, j.getReadyTime());
+        if (result == 0) {
+            result = Integer.compare(dueTime, j.getDueTime());
+            if(result == 0) {
+                result = Integer.compare(processingTime, j.getProcessingTime());
+            }
+        }
+        return result;
     }
 }

@@ -2,6 +2,7 @@ package io;
 
 import commons.Instance;
 import commons.Job;
+import commons.Machine;
 import commons.Result;
 
 import java.io.BufferedWriter;
@@ -16,7 +17,7 @@ public class SaveFile {
 
         int instanceSize = instance.getInstanceSize();
 
-        String plik = "instances/in" + instance.getName();
+        String plik = "instances/in" + instance.getName() + ".txt";
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(plik)));
         out.write(Integer.toString(instanceSize) + "\n");
 
@@ -37,9 +38,8 @@ public class SaveFile {
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(plik)));
         out.write(Integer.toString(resultValue) + "\n");
 
-        List<List<Job>> resultJobs = result.getJobs();
-        for (List<Job> listJob : resultJobs) {
-            for (Job job : listJob) {
+        for (Machine m : result.getMachines()) {
+            for (Job job : m.getJobs()) {
                 out.write(Integer.toString(job.getJobId()) + " ");
             }
             out.write("\n");

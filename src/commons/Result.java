@@ -1,27 +1,30 @@
 package commons;
 
-import commons.Job;
-
+import javax.crypto.Mac;
 import java.util.List;
+
+import static configuration.Config.MACHINES;
 
 public class Result {
     private int delay = 0;
+    private int loadedDelay;
     private int instanceSize;
     private String instanceName;
-    private List<List<Job>> jobs;
+    private List<Machine> machines;
 
-    public Result(String instanceName, int instanceSize, List<List<Job>> jobs) {
+    public Result(String instanceName, int instanceSize, List<Machine> machines) {
         this.instanceName = instanceName;
         this.instanceSize = instanceSize;
-        this.jobs = jobs;
-        delay = Delay.calculateDelay(jobs);
+        this.machines = machines;
+        calculateDelay();
     }
 
-    public Result(String instanceName, int instanceSize, int delay, List<List<Job>> jobs) {
+    public Result(String instanceName, int instanceSize, int loadedDelay, List<Machine> machines) {
         this.instanceName = instanceName;
         this.instanceSize = instanceSize;
-        this.delay = delay;
-        this.jobs = jobs;
+        this.loadedDelay = loadedDelay;
+        this.machines = machines;
+        calculateDelay();
     }
 
     public int getInstanceSize() {
@@ -32,12 +35,22 @@ public class Result {
         return delay;
     }
 
-    public List<List<Job>> getJobs() {
-        return jobs;
+    public int getLoadedDelay() {
+        return loadedDelay;
+    }
+
+    public List<Machine> getMachines() {
+        return machines;
     }
 
     public String getInstanceName() {
         return instanceName;
     }
 
+    public void calculateDelay() {
+        delay = 0;
+        for (Machine m : machines) {
+            delay += m.getDelay();
+        }
+    }
 }
