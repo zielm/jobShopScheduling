@@ -15,7 +15,7 @@ import static java.lang.Boolean.TRUE;
      public static final int SHIFT_DUE_TIME = 4;
      public static final int DENOMINATOR_SHIFT = 3;
 
-     public static final double PROCENT_READY_TIME = 0.9;
+     public static final double PROCENT_READY_TIME = 0.8;
 
      public static final boolean PROCESSING_TIME_VAR = TRUE;
 }

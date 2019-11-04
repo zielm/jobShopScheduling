@@ -21,7 +21,7 @@ public class InstanceGenerator {
 
     private void setParameters() {
         if (PROCESSING_TIME_VAR) {
-            MAX_PROCESSING_TIME = 8 + instanceSize / 75;
+            MAX_PROCESSING_TIME = 6 + instanceSize / 75;
         }
     }
 
