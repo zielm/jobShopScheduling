@@ -19,11 +19,11 @@ public class LoadFile {
         BufferedReader in = new BufferedReader(new InputStreamReader(stream));
 
         int n = Integer.parseInt(in.readLine());
-        Instance loadedInstance = new Instance(filename, n);
 
         String line;
         String[] lineSplit;
         List<Job> jobs = new ArrayList<>();
+        Instance loadedInstance = new Instance(filename, n, null);
         for (int i = 0; i < n; i++) {
             line = in.readLine();
             lineSplit = line.split(" ");
@@ -40,7 +40,7 @@ public class LoadFile {
 
     public static Result loadResult(Instance instance) throws IOException {
 
-        String file = "results/out" + instance.getName();
+        String file = "wyniki/out" + instance.getName() + "_" + instance.getInstanceSize() + ".txt";
         BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file));
         BufferedReader in = new BufferedReader(new InputStreamReader(stream));
 

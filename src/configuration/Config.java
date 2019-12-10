@@ -17,6 +17,6 @@ import static java.lang.Boolean.TRUE;
      public static final double PROCENT_READY_TIME = 0.8;
 
      public static final boolean PROCESSING_TIME_VAR = TRUE;
-
+     
      public static String[] INSTANCE_NAMES =  new String[]{"00","01"};
-}
+ }

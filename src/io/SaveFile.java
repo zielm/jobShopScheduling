@@ -36,7 +36,7 @@ public class SaveFile {
     public static void saveResult(String algorithm, Result result) throws IOException {
         int resultValue = result.getDelay();
 
-        String filePath = "results/" + algorithm+ "/";
+        String filePath = "results/" ;
         Path path = Paths.get(filePath);
         if(!Files.exists(path)) {
             Files.createDirectory(path);
