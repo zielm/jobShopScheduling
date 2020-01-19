@@ -5,7 +5,6 @@ import static java.lang.Boolean.TRUE;
  public class Config {
 
      public static final int MACHINES = 4;
-     public static final String INSTANCE_NAME = "00";
      public static final int INSTANCE_START_SIZE = 50;
      public static final int INSTANCE_N = 10;
 
@@ -18,4 +17,6 @@ import static java.lang.Boolean.TRUE;
      public static final double PROCENT_READY_TIME = 0.8;
 
      public static final boolean PROCESSING_TIME_VAR = TRUE;
-}
+     
+     public static String[] INSTANCE_NAMES =  new String[]{"00","01"};
+ }

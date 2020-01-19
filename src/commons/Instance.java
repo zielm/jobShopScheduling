@@ -18,6 +18,12 @@ public class Instance {
         jobs = instanceGenerator.getJobs();
     }
 
+    public Instance(String name, int instanceSize, List<Job> jobs) {
+        this.name = name;
+        this.instanceSize = instanceSize;
+        this.jobs = jobs;
+    }
+
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }

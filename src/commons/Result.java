@@ -44,7 +44,7 @@ public class Result {
     }
 
     public String getInstanceName() {
-        return instanceName;
+        return instanceName + "_" + instanceSize;
     }
 
     public void calculateDelay() {
