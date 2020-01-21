@@ -31,5 +31,14 @@ public class Machine {
         scheduledJobs.add(new ScheduledJob(newJob, Math.max(newJob.getReadyTime(), getLastFinished())));
     }
 
+    public int calculateDelayAgain() {
+        int prevFinished = 0;
+        for(ScheduledJob j : scheduledJobs) {
+            j.setStartTime(Math.max(j.getReadyTime(), prevFinished));
+            prevFinished = j.getEndTime();
+        }
+        return getDelay();
+    }
+
 
 }
